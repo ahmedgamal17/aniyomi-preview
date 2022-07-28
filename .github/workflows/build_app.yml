@@ -62,7 +62,7 @@ jobs:
 
           echo "COMMIT_LOGS<<{delimiter}
           $(curl -H "Accept: application/vnd.github.v3+json" \
-            "https://api.github.com/repos/jmir1/aniyomi/compare/$prev_release_sha...$current_sha" \
+            "https://api.github.com/repos/ahmedgamal17/aniyomi/compare/$prev_release_sha...$current_sha" \
             | jq '[.commits[]|{message:(.commit.message | split("\n")), username:.author.login}]' \
             | jq -r '.[]|"- \(.message | first) (@\(.username))"')
           {delimiter}" >> $GITHUB_ENV
@@ -100,7 +100,7 @@ jobs:
           body: |
             ### Commits
             
-            https://github.com/jmir1/aniyomi/compare/${{ env.PREV_RELEASE_SHA }}...${{ env.CURRENT_SHA }}
+            https://github.com/ahmedgamal17/aniyomi/compare/${{ env.PREV_RELEASE_SHA }}...${{ env.CURRENT_SHA }}
             
             ${{ env.COMMIT_LOGS }}
 
